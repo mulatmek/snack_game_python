@@ -8,7 +8,7 @@ RIGHT = 0
 LEFT = 180
 
 
-class Snack:
+class Snake:
     def __init__(self):
         self.segments = []
         self.create_snake()
@@ -16,11 +16,17 @@ class Snack:
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            new_segment = Turtle("square")
-            new_segment.color("white")
-            new_segment.penup()
-            new_segment.goto(position)
-            self.segments.append(new_segment)
+            self.add_segment(position)
+
+    def extend(self):
+        self.add_segment(self.segments[len(self.segments)-1].position())
+
+    def add_segment(self, position):
+        new_segment = Turtle("square")
+        new_segment.color("white")
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
 
     def up(self):
         # when the snack go up he cannot go down
