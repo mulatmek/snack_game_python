@@ -1,7 +1,14 @@
 import time
+import turtle
+
 from snack import Snack
 from turtle import Screen
 from food import Food
+from scoreboard import ScoreBoard
+
+
+# global variable
+
 
 
 def setting_keys(screen, snack):
@@ -20,6 +27,7 @@ def main():
 
     snack = Snack()
     food = Food()
+    scoreboard =ScoreBoard()
 
     # listen to events
     screen.listen()
@@ -32,6 +40,7 @@ def main():
         snack.move()
         if snack.head.distance(food) < 15:
             food.refresh()
+            scoreboard.increase_score()
         # collision with food
 
     screen.exitonclick()
